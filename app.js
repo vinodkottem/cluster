@@ -1,17 +1,13 @@
 var express = require('express');
 var cfenv = require('cfenv');
-var cluster = require('cluster');
-var http = require('http');
 var app = express();
-var numWorkers ;
-if(cluster.isMaster) {
-    numWorkers = require('os').cpus().length;
-    console.log(numWorkers);
-    }
-
 app.use(express.static(__dirname + '/public'));
 app.get('/nocpus', function(req, res){
-	  res.send({'hello world':numWorkers});
+	  res.send({'hello world':'Okay'});
+	});
+app.get('/crashme', function(req, res){
+	  process.exit(1);
+	  res.send({'hello world':'Okay'});
 	});
 var appEnv = cfenv.getAppEnv();
 app.listen(appEnv.port, '0.0.0.0', function() {
