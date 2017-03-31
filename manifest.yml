@@ -3,6 +3,6 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: listen-node-cluster
-  host: listen-node-cluster
+  name: listen-okay-cluster
+  host: listen-okay-cluster
   disk_quota: 256M
